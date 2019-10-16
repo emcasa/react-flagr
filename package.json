@@ -4,7 +4,7 @@
   "description": "",
   "main": "build/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha -r @babel/register -r test/setup.js \"test/**/*.spec.js\""
   },
   "author": "",
   "license": "MIT",
@@ -13,6 +13,18 @@
     "react": ">=16.0.0"
   },
   "devDependencies": {
-    "prop-types": "^15.7.2"
+    "@babel/core": "^7.6.4",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/preset-env": "^7.6.3",
+    "@babel/preset-react": "^7.6.3",
+    "@babel/register": "^7.6.2",
+    "chai": "^4.2.0",
+    "jsdom": "^15.2.0",
+    "mocha": "^6.2.1",
+    "nock": "^11.4.0",
+    "prop-types": "^15.7.2",
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2",
+    "sinon": "^7.5.0"
   }
 }
