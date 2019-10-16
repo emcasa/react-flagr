@@ -1,5 +1,15 @@
 import React, {PureComponent} from 'react'
 import {withFlagr} from './Context'
+import Case from './Case'
+
+const isFlagrCase = (variant) => (element) => (
+  element && (!element.props.variant || element.props.variant === variant)
+)
+
+const assertFlagrCaseElement = (element) => {
+  if (element && element.type !== Case)
+    throw new Error('Only instances of FlagrCase are allowed as children of FlagrSwitch.')
+}
 
 class FlagrSwitch extends PureComponent {
   state = {}
@@ -16,12 +26,9 @@ class FlagrSwitch extends PureComponent {
   }
 
   renderVariant(flag) {
-    const {children} = this.props
-    return React.Children.map(children, (child) => {
-      if (child && (child.props.variant === flag.variant || !child.props.variant)) {
-        return React.cloneElement(child, {value: flag})
-      }
-    })
+    const children = React.Children.toArray(this.props.children)
+    children.forEach(assertFlagrCaseElement)
+    return children.filter(isFlagrCase(flag.variantKey)).shift()
   }
 
   render() {

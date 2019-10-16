@@ -1,6 +1,6 @@
 import React, {createContext, PureComponent} from 'react'
-import * as lib from './lib'
 import PropTypes from 'prop-types'
+import * as lib from './lib'
 
 export const FlagrContext = createContext({
   flags: {},
@@ -54,7 +54,7 @@ class FlagrProvider extends PureComponent {
 export const Provider = FlagrProvider
 
 export const withFlagr = (Target) => (props) => (
-  <Consumer>
+  <FlagrContext.Consumer>
     {(ctx) => <Target {...props} {...ctx} />}
-  </Consumer>
+  </FlagrContext.Consumer>
 )
