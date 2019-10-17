@@ -1,3 +1,11 @@
+/**
+ * @param {String[]} flagKey
+ * @param {String}   entityID       Unique identifier
+ * @param {Object}   options
+ * @param {String}   options.url    Flagr host
+ * @param {Function} options.fetch  fetch-like function
+ * @see https://checkr.github.io/flagr/api_docs/#operation/postEvaluation
+ */
 export async function fetchFlag(flagKey, entityID, {
   url,
   fetch = process.browser && window.fetch
@@ -16,11 +24,12 @@ export async function fetchFlag(flagKey, entityID, {
 }
 
 /**
- * @param {String[]} flagKeys       Flags to fetch
+ * @param {String[]} flagKey
  * @param {String}   entityID       Unique identifier
  * @param {Object}   options
  * @param {String}   options.url    Flagr host
  * @param {Function} options.fetch  fetch-like function
+ * @see https://checkr.github.io/flagr/api_docs/#operation/postEvaluationBatch
  */
 export async function fetchFlagBatch(flagKeys, entityID, {
   url,

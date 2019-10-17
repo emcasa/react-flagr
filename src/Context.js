@@ -19,32 +19,29 @@ class FlagrProvider extends PureComponent {
     flags: {}
   }
 
-  state = {
-    flags: this.props.flags,
-    fetchFlag: this.fetchFlag
-  }
+  state = this.props.flags
 
   componentDidUpdate(prevProps) {
     if(prevProps.flags !== this.props.flags)
     this.setState({
-      flags: {
-        ...this.state.flags,
-        ...this.props.flags
-      }
+      ...this.state,
+      ...this.props.flags
     })
   }
 
+  getContext = () => ({
+    flags: this.state,
+    fetchFlag: this.fetchFlag
+  })
+
   fetchFlag = async (flagKey) => {
     const flag = await lib.fetchFlag(flagKey, this.props.entityId, this.props)
-    this.setState((state) => ({
-      ...state,
-      flags: {...state.flags, [flagKey]: flag}
-    }))
+    this.setState((state) => ({...state, [flagKey]: flag}))
   }
 
   render() {
     return (
-      <FlagrContext.Provider value={this.state}>
+      <FlagrContext.Provider value={this.getContext()}>
         {this.props.children}
       </FlagrContext.Provider>
     )

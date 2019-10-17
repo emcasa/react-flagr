@@ -935,7 +935,7 @@ caseless@~0.12.0:
   resolved "https://registry.yarnpkg.com/caseless/-/caseless-0.12.0.tgz#1b681c21ff84033c826543090689420d187151dc"
   integrity sha1-G2gcIf+EAzyCZUMJBolCDRhxUdw=
 
-chai@^4.1.2, chai@^4.2.0:
+chai@^4.2.0:
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/chai/-/chai-4.2.0.tgz#760aa72cf20e3795e84b12877ce0e83737aa29e5"
   integrity sha512-XQU3bhBukrOsQCuwZndwGcCVQHyZi53fQ6Ys1Fym7E4olpIqqZZhhoFJoaKVvV17lWQoXYwgWN2nF5crA8J2jw==
@@ -1515,7 +1515,7 @@ json-schema@0.2.3:
   resolved "https://registry.yarnpkg.com/json-schema/-/json-schema-0.2.3.tgz#b480c892e59a2f05954ce727bd3f2a4e882f9e13"
   integrity sha1-tIDIkuWaLwWVTOcnvT8qTogvnhM=
 
-json-stringify-safe@^5.0.1, json-stringify-safe@~5.0.1:
+json-stringify-safe@~5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/json-stringify-safe/-/json-stringify-safe-5.0.1.tgz#1296a2d58fd45f19a0f6ce01d65701e2c735b6eb"
   integrity sha1-Epai1Y/UXxmg9s4B1lcB4sc1tus=
@@ -1624,7 +1624,7 @@ minimist@^1.2.0:
   resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.0.tgz#a35008b20f41383eec1fb914f4cd5df79a264284"
   integrity sha1-o1AIsg9BOD7sH7kU9M1d95omQoQ=
 
-mkdirp@0.5.1, mkdirp@^0.5.0, mkdirp@^0.5.1:
+mkdirp@0.5.1, mkdirp@^0.5.1:
   version "0.5.1"
   resolved "https://registry.yarnpkg.com/mkdirp/-/mkdirp-0.5.1.tgz#30057438eac6cf7f8c4767f38648d6697d75c903"
   integrity sha1-MAV0OOrGz3+MR2fzhkjWaX11yQM=
@@ -1680,18 +1680,6 @@ nise@^1.5.2:
     just-extend "^4.0.2"
     lolex "^4.1.0"
     path-to-regexp "^1.7.0"
-
-nock@^11.4.0:
-  version "11.4.0"
-  resolved "https://registry.yarnpkg.com/nock/-/nock-11.4.0.tgz#68c2f9cf533f13ecb1a43e956823dbfba5593d17"
-  integrity sha512-UrVEbEAvhyDoUttrS0fv3znhZ5nEJvlxqgmrC6Gb2Mf9cFci65RMK17e6EjDDQB57g5iwZw1TFnVvyeL0eUlhQ==
-  dependencies:
-    chai "^4.1.2"
-    debug "^4.1.0"
-    json-stringify-safe "^5.0.1"
-    lodash "^4.17.13"
-    mkdirp "^0.5.0"
-    propagate "^2.0.0"
 
 node-environment-flags@1.0.5:
   version "1.0.5"
@@ -1873,11 +1861,6 @@ prop-types@^15.6.2, prop-types@^15.7.2:
     loose-envify "^1.4.0"
     object-assign "^4.1.1"
     react-is "^16.8.1"
-
-propagate@^2.0.0:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/propagate/-/propagate-2.0.1.tgz#40cdedab18085c792334e64f0ac17256d38f9a45"
-  integrity sha512-vGrhOavPSTz4QVNuBNdcNXePNdNMaO1xj9yBeH1ScQPjk/rhg9sSlCXPhMkFuaNNW/syTvYqsnbIJxMBfRbbag==
 
 psl@^1.1.24, psl@^1.1.28:
   version "1.4.0"
