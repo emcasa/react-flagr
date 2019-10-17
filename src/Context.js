@@ -1,6 +1,6 @@
 import React, {createContext, PureComponent} from 'react'
 import PropTypes from 'prop-types'
-import * as lib from './flagr'
+import * as flagr from './flagr'
 
 export const FlagrContext = createContext({
   flags: {},
@@ -35,7 +35,7 @@ class FlagrProvider extends PureComponent {
   })
 
   fetchFlag = async (flagKey) => {
-    const flag = await lib.fetchFlag(flagKey, this.props.entityId, this.props)
+    const flag = await flagr.fetchFlag(flagKey, this.props.entityId, this.props)
     this.setState((state) => ({...state, [flagKey]: flag}))
   }
 
@@ -49,9 +49,4 @@ class FlagrProvider extends PureComponent {
 }
 
 export const Provider = FlagrProvider
-
-export const withFlagr = (Target) => (props) => (
-  <FlagrContext.Consumer>
-    {(ctx) => <Target {...props} {...ctx} />}
-  </FlagrContext.Consumer>
-)
+export const Consumer = FlagrContext.Consumer

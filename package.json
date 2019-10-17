@@ -10,7 +10,9 @@
   },
   "author": "",
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "hoist-non-react-statics": "^3.3.0"
+  },
   "engines": {
     "node": ">=7.6"
   },

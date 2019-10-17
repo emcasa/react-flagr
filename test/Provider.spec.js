@@ -3,20 +3,11 @@ import {render} from 'react-dom'
 import {act} from 'react-dom/test-utils'
 import sinon from 'sinon'
 import * as flagr from '../src/flagr'
-import {Provider, withFlagr} from '../src'
+import {Provider, withFlag} from '../src'
 
-const FlagrTestConsumer = withFlagr(
-  class extends PureComponent {
-    componentDidMount() {
-      this.props.fetchFlag('test')
-    }
-
-    render() {
-      const flag = this.props.flags['test']
-      return flag ? flag.variantKey : null
-    }
-  }
-)
+const FlagrTestConsumer = withFlag('test')(({flag}) => (
+  flag ? flag.variantKey : null
+))
 
 describe('Provider', () => {
   before(() => {

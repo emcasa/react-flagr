@@ -1,5 +1,6 @@
 import React, {PureComponent} from 'react'
-import {withFlagr} from './Context'
+import PropTypes from 'prop-types'
+import withFlag from './withFlag'
 import Case from './Case'
 
 const isFlagrCase = (variant) => (element) => (
@@ -8,36 +9,28 @@ const isFlagrCase = (variant) => (element) => (
 
 const assertFlagrCaseElement = (element) => {
   if (element && element.type !== Case)
-    throw new Error('Only instances of FlagrCase are allowed as children of FlagrSwitch.')
+    throw new Error('Only instances of FlagrCase are allowed as direct children of FlagrSwitch.')
 }
 
 class FlagrSwitch extends PureComponent {
-  state = {}
-
-  static getDerivedStateFromProps({flags, flagKey}) {
-    return {
-      result: flags[flagKey]
-    }
-  }
-
-  componentDidMount() {
-    const {fetchFlag, flagKey} = this.props
-    if (!this.state.result) fetchFlag(flagKey)
+  static propTypes = {
+    flagKey: PropTypes.string.isRequired
   }
 
   renderVariant(flag) {
     const children = React.Children.toArray(this.props.children)
     children.forEach(assertFlagrCaseElement)
-    return children.filter(isFlagrCase(flag.variantKey)).shift()
+    const element = children.filter(isFlagrCase(flag.variantKey)).shift()
+    if (element) return React.cloneElement(element, {value: flag})
+    else return null
   }
 
   render() {
-    const {LoadingComponent} = this.props
-    const {result} = this.state
-    if (result) return this.renderVariant(result)
+    const {LoadingComponent, flag} = this.props
+    if (flag) return this.renderVariant(flag)
     else if (LoadingComponent) return <LoadingComponent />
     else return null
   }
 }
 
-export default withFlagr(FlagrSwitch)
+export default withFlag((props) => props.flagKey)(FlagrSwitch)
