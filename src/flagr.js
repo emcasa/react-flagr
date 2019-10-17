@@ -1,19 +1,25 @@
 /**
- * @param {String[]} flagKey
- * @param {String}   entityID       Unique identifier
+ * @param {String}   flagKey
+ * @param {Object}   entity
+ * @param {String}   entity.id
+ * @param {String}   entity.type
+ * @param {Object}   entity.context
  * @param {Object}   options
  * @param {String}   options.url    Flagr host
  * @param {Function} options.fetch  fetch-like function
  * @see https://checkr.github.io/flagr/api_docs/#operation/postEvaluation
  */
-export async function fetchFlag(flagKey, entityID, {
+export async function fetchFlag(flagKey, entity, {
   url,
+  enableDebug = false,
   fetch = process.browser && window.fetch
 } = {}) {
   const params = {
     flagKey,
-    entityID,
-    enableDebug: false
+    enableDebug,
+    entityID: entity.id,
+    entityType: entity.type,
+    entityContext: entity.context
   }
   const response = await fetch(`${url}/api/v1/evaluation`, {
     method: 'post',
@@ -25,20 +31,28 @@ export async function fetchFlag(flagKey, entityID, {
 
 /**
  * @param {String[]} flagKey
- * @param {String}   entityID       Unique identifier
+ * @param {Object}   entity
+ * @param {String}   entity.id
+ * @param {String}   entity.type
+ * @param {Object}   entity.context
  * @param {Object}   options
  * @param {String}   options.url    Flagr host
  * @param {Function} options.fetch  fetch-like function
  * @see https://checkr.github.io/flagr/api_docs/#operation/postEvaluationBatch
  */
-export async function fetchFlagBatch(flagKeys, entityID, {
+export async function fetchFlagBatch(flagKeys, entity, {
   url,
+  enableDebug = false,
   fetch = process.browser && window.fetch
 } = {}) {
   const params = {
     flagKeys,
-    entities: {entityID},
-    enableDebug: false
+    enableDebug,
+    entities: [{
+      entityID: entity.id,
+      entityType: entity.type,
+      entityContext: entity.context,
+    }]
   }
   const response = await fetch(`${url}/api/v1/evaluation/batch`, {
     method: 'post',

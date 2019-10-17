@@ -11,6 +11,8 @@ class FlagrProvider extends PureComponent {
   static propTypes = {
     flags: PropTypes.object.isRequired,
     entityId: PropTypes.string.isRequired,
+    entityType: PropTypes.string,
+    entityContext: PropTypes.object,
     url: PropTypes.string.isRequired,
     fetch: PropTypes.func
   }
@@ -35,7 +37,15 @@ class FlagrProvider extends PureComponent {
   })
 
   fetchFlag = async (flagKey) => {
-    const flag = await flagr.fetchFlag(flagKey, this.props.entityId, this.props)
+    const flag = await flagr.fetchFlag(
+      flagKey,
+      {
+        id: this.props.entityId,
+        type: this.props.entityType,
+        context: this.props.entityContext
+      },
+      this.props
+    )
     this.setState((state) => ({...state, [flagKey]: flag}))
   }
 

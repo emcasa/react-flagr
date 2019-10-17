@@ -1,14 +1,14 @@
 {
-  "name": "react-flagr",
+  "name": "@emcasa/react-flagr",
   "version": "1.0.0",
-  "description": "",
+  "description": "React components to handle A/B testing with Flagr",
   "main": "build/index.js",
   "scripts": {
     "build": "babel src -d build",
     "test": "mocha -r @babel/register -r test/setup.js \"test/**/*.spec.js\"",
     "prepublish": "yarn build"
   },
-  "author": "",
+  "author": "dev@emcasa.com",
   "license": "MIT",
   "dependencies": {
     "hoist-non-react-statics": "^3.3.0"
