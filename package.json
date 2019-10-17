@@ -4,15 +4,21 @@
   "description": "",
   "main": "build/index.js",
   "scripts": {
-    "test": "mocha -r @babel/register -r test/setup.js \"test/**/*.spec.js\""
+    "build": "babel src -d build",
+    "test": "mocha -r @babel/register -r test/setup.js \"test/**/*.spec.js\"",
+    "prepublish": "yarn build"
   },
   "author": "",
   "license": "MIT",
   "dependencies": {},
+  "engines": {
+    "node": ">=7.6"
+  },
   "peerDependencies": {
     "react": ">=16.0.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.6.4",
     "@babel/core": "^7.6.4",
     "@babel/plugin-proposal-class-properties": "^7.5.5",
     "@babel/preset-env": "^7.6.3",

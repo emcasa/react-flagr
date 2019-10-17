@@ -6,7 +6,7 @@
       {
         "modules": "cjs",
         "targets": {
-          "node": "current"
+          "node": "7.6"
         }
       }
     ]

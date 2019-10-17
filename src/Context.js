@@ -1,6 +1,6 @@
 import React, {createContext, PureComponent} from 'react'
 import PropTypes from 'prop-types'
-import * as lib from './lib'
+import * as lib from './flagr'
 
 export const FlagrContext = createContext({
   flags: {},

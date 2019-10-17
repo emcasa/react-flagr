@@ -2,7 +2,7 @@ import React, {PureComponent} from 'react'
 import {render} from 'react-dom'
 import {act} from 'react-dom/test-utils'
 import sinon from 'sinon'
-import * as lib from '../src/lib'
+import * as flagr from '../src/flagr'
 import {Provider, withFlagr} from '../src'
 
 const FlagrTestConsumer = withFlagr(
@@ -20,11 +20,11 @@ const FlagrTestConsumer = withFlagr(
 
 describe('Provider', () => {
   before(() => {
-    sinon.stub(lib, 'fetchFlag').returns(Promise.resolve({variantKey: 'test'}))
+    sinon.stub(flagr, 'fetchFlag').returns(Promise.resolve({variantKey: 'test'}))
   })
 
   after(() => {
-    lib.fetchFlag.restore()
+    flagr.fetchFlag.restore()
   })
 
   it('updates flags with fetchFlag', async () => {
