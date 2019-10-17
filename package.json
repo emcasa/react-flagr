@@ -1,18 +1,37 @@
 {
-  "name": "react-flagr",
+  "name": "@emcasa/react-flagr",
   "version": "1.0.0",
-  "description": "",
+  "description": "React components to handle A/B testing with Flagr",
   "main": "build/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "babel src -d build",
+    "test": "mocha -r @babel/register -r test/setup.js \"test/**/*.spec.js\"",
+    "prepublish": "yarn build"
   },
-  "author": "",
+  "author": "dev@emcasa.com",
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "hoist-non-react-statics": "^3.3.0"
+  },
+  "engines": {
+    "node": ">=7.6"
+  },
   "peerDependencies": {
     "react": ">=16.0.0"
   },
   "devDependencies": {
-    "prop-types": "^15.7.2"
+    "@babel/cli": "^7.6.4",
+    "@babel/core": "^7.6.4",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/preset-env": "^7.6.3",
+    "@babel/preset-react": "^7.6.3",
+    "@babel/register": "^7.6.2",
+    "chai": "^4.2.0",
+    "jsdom": "^15.2.0",
+    "mocha": "^6.2.1",
+    "prop-types": "^15.7.2",
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2",
+    "sinon": "^7.5.0"
   }
 }
